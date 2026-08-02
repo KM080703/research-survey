@@ -7,24 +7,119 @@
 
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #151515;
+    padding: 45px;
+    border-radius: 18px;
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 30px rgba(255,255,255,0.08);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 36px;
+    margin: 0 0 15px 0;
+}
+
+p {
+    color: #cccccc;
+    font-size: 17px;
+    margin-bottom: 30px;
+}
+
+.cf-turnstile {
+    display: flex;
+    justify-content: center;
+}
+
+#surveyButton {
+    display: none;
+    margin-top: 30px;
+}
+
+a {
+    display: inline-block;
+    padding: 14px 35px;
+    background-color: #ffffff;
+    color: #000000;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+a:hover {
+    background-color: #cccccc;
+    transform: scale(1.05);
+}
+
+</style>
+
 </head>
 
 
 <body>
 
-<h1>Research Survey</h1>
 
-<p>Please verify you are human to continue.</p>
+<div class="container">
 
-<div class="cf-turnstile" 
-data-sitekey="0x4AAAAAAEEBbP_CHr3V4Oa4">
+    <h1>Research Survey</h1>
+
+    <p>
+        Please verify you are human before continuing.
+    </p>
+
+
+    <div class="cf-turnstile"
+         data-sitekey="0x4AAAAAAEEBbP_CHr3V4Oa4"
+         data-callback="turnstileCompleted">
+    </div>
+
+
+    <div id="surveyButton">
+
+        <a href="https://fullerton.qualtrics.com/jfe/form/SV_cZJSyLIrTXtcGUe">
+            Start Survey
+        </a>
+
+    </div>
+
+
 </div>
 
-<br>
 
-<a href="https://fullerton.qualtrics.com/jfe/form/SV_cZJSyLIrTXtcGUe">
-Start Survey
-</a>
+
+<script>
+
+function turnstileCompleted() {
+    document.getElementById("surveyButton").style.display = "block";
+}
+
+</script>
+
 
 </body>
 
